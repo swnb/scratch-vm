@@ -1109,6 +1109,10 @@ class RenderedTarget extends Target {
                 this.runtime.requestRedraw();
             }
         }
+
+        if(this.sprite.cloneCount() === 0) {
+            this.sprite.dispose();
+        }
     }
 }
 

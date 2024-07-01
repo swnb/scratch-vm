@@ -135,6 +135,14 @@ class Sprite {
         }
     }
 
+    /**
+     * Get the number of clones of this sprite.
+     * @return {number}
+     */
+    cloneCount () {
+        return this.clones.length;
+    }
+
     duplicate () {
         const newSprite = new Sprite(null, this.runtime);
         const blocksContainer = this.blocks._blocks;
@@ -171,6 +179,10 @@ class Sprite {
         if (this.soundBank) {
             this.soundBank.dispose();
         }
+
+        this.costumes_.forEach(costume => {
+            this.runtime.renderer.destroySkin(costume.skinId);
+        });
     }
 }
 
